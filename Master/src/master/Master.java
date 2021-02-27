@@ -185,7 +185,45 @@ public class Master {
     }
     return arrayToSort;
     }
-    
+    public static int[] mergeSort(int[] a, int n) {
+    if (n < 2) {
+        return new int[0];
+    }
+    int mid = n / 2;
+    int[] l = new int[mid];
+    int[] r = new int[n - mid];
+
+    for (int i = 0; i < mid; i++) {
+        l[i] = a[i];
+    }
+    for (int i = mid; i < n; i++) {
+        r[i - mid] = a[i];
+    }
+    mergeSort(l, mid);
+    mergeSort(r, n - mid);
+
+    merge(a, l, r, mid, n - mid);
+    return a;
+    }
+    public static void merge(
+    int[] a, int[] l, int[] r, int left, int right) {
+ 
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (l[i] <= r[j]) {
+            a[k++] = l[i++];
+        }
+        else {
+            a[k++] = r[j++];
+        }
+    }
+    while (i < left) {
+        a[k++] = l[i++];
+    }
+    while (j < right) {
+        a[k++] = r[j++];
+    }
+}
        private static void autoCountRandom(int limite, String algorythm, int numberOfTests){
            
            for(int i = 0; i < numberOfTests; i++)
@@ -243,6 +281,13 @@ public class Master {
                         segundos = (double)milisec/1000;
                         System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
                         break;
+                    case "mergeSort":
+                        start = System.currentTimeMillis();
+                        aux = mergeSort(arranjo, arranjo.length);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        break;
                 }
            }
            
@@ -254,7 +299,7 @@ public class Master {
         //limite de quickSort maximo é 7500, se não da stack overflow
         //limite de quickSort2 maximo é 15400, se não da stack overflow
         
-        autoCountRandom(limite, "shellSort", 10);
+        autoCountRandom(limite, "mergeSort", 10);
         
         //valor maximo de int
         System.out.println(Integer.MAX_VALUE);
