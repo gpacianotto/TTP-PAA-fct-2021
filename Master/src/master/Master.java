@@ -224,6 +224,19 @@ public class Master {
         a[k++] = r[j++];
     }
 }
+    public static int[] insertionSort(int array[]) {  
+        int n = array.length;  
+        for (int j = 1; j < n; j++) {  
+            int key = array[j];  
+            int i = j-1;  
+            while ( (i > -1) && ( array [i] > key ) ) {  
+                array [i+1] = array [i];  
+                i--;  
+            }  
+            array[i+1] = key;  
+        }
+        return array;
+    }  
        private static void autoCountRandom(int limite, String algorythm, int numberOfTests){
            
            for(int i = 0; i < numberOfTests; i++)
@@ -283,7 +296,14 @@ public class Master {
                         break;
                     case "mergeSort":
                         start = System.currentTimeMillis();
-                        aux = mergeSort(arranjo, arranjo.length);
+                        aux = mergeSort(arranjo, arranjo.length-1);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        break;
+                    case "insertionSort":
+                        start = System.currentTimeMillis();
+                        aux = insertionSort(arranjo);
                         milisec = System.currentTimeMillis() - start;
                         segundos = (double)milisec/1000;
                         System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
@@ -294,12 +314,12 @@ public class Master {
        }
     
     public static void main(String[] args) {
-        final int limite = 50000;
+        final int limite = 900000;
         
         //limite de quickSort maximo é 7500, se não da stack overflow
         //limite de quickSort2 maximo é 15400, se não da stack overflow
         
-        autoCountRandom(limite, "mergeSort", 10);
+        autoCountRandom(limite, "insertionSort", 10);
         
         //valor maximo de int
         System.out.println(Integer.MAX_VALUE);
