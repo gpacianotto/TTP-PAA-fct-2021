@@ -168,7 +168,23 @@ public class Master {
             arr[i] = smallerNumber;  
         }
         return arr;
-    }  
+    }
+    public static int[] shellSort(int arrayToSort[]) {
+    int n = arrayToSort.length;
+
+    for (int gap = n / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < n; i++) {
+            int key = arrayToSort[i];
+            int j = i;
+            while (j >= gap && arrayToSort[j - gap] > key) {
+                arrayToSort[j] = arrayToSort[j - gap];
+                j -= gap;
+            }
+            arrayToSort[j] = key;
+        }
+    }
+    return arrayToSort;
+    }
     
        private static void autoCountRandom(int limite, String algorythm, int numberOfTests){
            
@@ -220,6 +236,13 @@ public class Master {
                         segundos = (double)milisec/1000;
                         System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
                         break;
+                    case "shellSort":
+                        start = System.currentTimeMillis();
+                        aux = shellSort(arranjo);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        break;
                 }
            }
            
@@ -231,9 +254,9 @@ public class Master {
         //limite de quickSort maximo é 7500, se não da stack overflow
         //limite de quickSort2 maximo é 15400, se não da stack overflow
         
-        autoCountRandom(limite, "selectionSort", 10);
+        autoCountRandom(limite, "shellSort", 10);
         
-        //mostraNumeros(arranjoInverso);
+        //valor maximo de int
         System.out.println(Integer.MAX_VALUE);
         
     }
