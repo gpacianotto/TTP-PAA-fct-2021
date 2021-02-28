@@ -306,74 +306,236 @@ public class Master {
                 switch(algorythm){
                     case "quickSort":
                         //aleatorio
-                        long start = System.currentTimeMillis();
+                        long start = System.nanoTime();
                         aux = quickSort(arranjo, 0, arranjo.length - 1);
-                        milisec = System.currentTimeMillis() - start;
+                        milisec = System.nanoTime() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                     case "quickSort2":
-                        start = System.currentTimeMillis();
+                        start = System.nanoTime();
                         aux = quickSort2(arranjo, 0, arranjo.length - 1);
-                        milisec = System.currentTimeMillis() - start;
+                        milisec = System.nanoTime() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                     case "bubbleSort":
                         start = System.currentTimeMillis();
                         aux = bubbleSort(arranjo);
                         milisec = System.currentTimeMillis() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                     case "selectionSort":
                         start = System.currentTimeMillis();
                         aux = selectionSort(arranjo);
                         milisec = System.currentTimeMillis() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                     case "shellSort":
                         start = System.currentTimeMillis();
                         aux = shellSort(arranjo);
                         milisec = System.currentTimeMillis() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                     case "mergeSort":
                         start = System.currentTimeMillis();
                         aux = mergeSort(arranjo, arranjo.length-1);
                         milisec = System.currentTimeMillis() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                     case "insertionSort":
-                        start = System.currentTimeMillis();
+                        start = System.nanoTime();
                         aux = insertionSort(arranjo);
-                        milisec = System.currentTimeMillis() - start;
+                        milisec = System.nanoTime() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                     case "heapSort":
                         start = System.currentTimeMillis();
                         heapSort(arranjo);
                         milisec = System.currentTimeMillis() - start;
                         segundos = (double)milisec/1000;
-                        System.out.println("Milisegundos: "+milisec+" Segundos: "+segundos);
+                        System.out.println(milisec);
                         break;
                 }
            }
            
        }
+       private static void autoCountCrescente(int limite, String algorythm, int numberOfTests){
+           for(int i = 0; i < numberOfTests; i++)
+           {
+               int[] arranjo = new int[limite];
+           int[] arranjoDecrescente = new int[limite];
+           int[] arranjoCrescente = new int[limite];
+        
+        
+        
+            arranjo = geraNumeros(arranjo, limite);
+          
+            arranjoCrescente = quickSort(arranjo, 0, limite-1);      
+
+            arranjoDecrescente = reverse(arranjo, limite);
+                long milisec;
+                double segundos;
+                int[] aux;
+                
+                
+                switch(algorythm){
+                    case "quickSort":
+                        //aleatorio
+                        long start = System.nanoTime();
+                        aux = quickSort(arranjoCrescente, 0, arranjoCrescente.length - 1);
+                        milisec = System.nanoTime() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "quickSort2":
+                        start = System.nanoTime();
+                        aux = quickSort2(arranjoCrescente, 0, arranjoCrescente.length - 1);
+                        milisec = System.nanoTime() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "bubbleSort":
+                        start = System.currentTimeMillis();
+                        aux = bubbleSort(arranjoCrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "selectionSort":
+                        start = System.currentTimeMillis();
+                        aux = selectionSort(arranjoCrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "shellSort":
+                        start = System.currentTimeMillis();
+                        aux = shellSort(arranjoCrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "mergeSort":
+                        start = System.currentTimeMillis();
+                        aux = mergeSort(arranjoCrescente, arranjoCrescente.length-1);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "insertionSort":
+                        start = System.nanoTime();
+                        aux = insertionSort(arranjoCrescente);
+                        milisec = System.nanoTime() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "heapSort":
+                        start = System.currentTimeMillis();
+                        heapSort(arranjoCrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                }
+           }
+       }
+       
+       private static void autoCountDecrescente(int limite, String algorythm, int numberOfTests){
+           for(int i = 0; i < numberOfTests; i++)
+           {
+               int[] arranjo = new int[limite];
+           int[] arranjoDecrescente = new int[limite];
+           int[] arranjoCrescente = new int[limite];
+        
+        
+        
+            arranjo = geraNumeros(arranjo, limite);
+          
+            arranjoCrescente = quickSort(arranjo, 0, limite-1);      
+
+            arranjoDecrescente = reverse(arranjo, limite);
+                long milisec;
+                double segundos;
+                int[] aux;
+                
+                
+                switch(algorythm){
+                    case "quickSort":
+                        //aleatorio
+                        long start = System.nanoTime();
+                        aux = quickSort(arranjoDecrescente, 0, arranjoDecrescente.length - 1);
+                        milisec = System.nanoTime() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "quickSort2":
+                        start = System.nanoTime();
+                        aux = quickSort2(arranjoDecrescente, 0, arranjoDecrescente.length - 1);
+                        milisec = System.nanoTime() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "bubbleSort":
+                        start = System.currentTimeMillis();
+                        aux = bubbleSort(arranjoDecrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "selectionSort":
+                        start = System.currentTimeMillis();
+                        aux = selectionSort(arranjoDecrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "shellSort":
+                        start = System.currentTimeMillis();
+                        aux = shellSort(arranjoDecrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "mergeSort":
+                        start = System.currentTimeMillis();
+                        aux = mergeSort(arranjoDecrescente, arranjoDecrescente.length-1);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "insertionSort":
+                        start = System.nanoTime();
+                        aux = insertionSort(arranjoDecrescente);
+                        milisec = System.nanoTime() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                    case "heapSort":
+                        start = System.currentTimeMillis();
+                        heapSort(arranjoDecrescente);
+                        milisec = System.currentTimeMillis() - start;
+                        segundos = (double)milisec/1000;
+                        System.out.println(milisec);
+                        break;
+                }
+           }
+       }
     
     public static void main(String[] args) {
-        final int limite = 5000000;
+        final int limite = 15400;
         
         //limite de quickSort maximo é 7500, se não da stack overflow
         //limite de quickSort2 maximo é 15400, se não da stack overflow
         
-        autoCountRandom(limite, "heapSort", 10);
-        
+        //autoCountRandom(limite, "quickSort2", 10);
+        //autoCountCrescente(limite, "quickSort2", 10);
+        autoCountDecrescente(limite, "quickSort2", 10);
         //valor maximo de int
         System.out.println(Integer.MAX_VALUE);
         
